@@ -1,0 +1,612 @@
+.homepage-background-img{
+	background-image: url("../images/HomePageLaptops.jpg");
+		font-family: 'Poppins', sans-serif;
+}
+
+.homepage-text{
+font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+color:#ffffff;
+	margin-top:50px;
+ font-weight: 600;
+ font-size:30px;}
+.shop-now-button{
+	margin-left:46%;
+}
+.navbar {
+	
+	position: static;
+background-color:#4FBDBA;
+	 
+	    color: #fff;
+	        -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+
+}
+
+.navbar-custom .collapse {
+	margin-right: 20%;
+}
+
+.nav-item {
+	margin-top: 5px;
+	margin-left: 10%;
+	font-size: 18px;
+	display:inline;
+}
+
+
+.fa-user {
+	display:inline;
+	color: #ffffff;
+	margin-left: 10px;
+	margin-top: 16px;
+}
+
+.navbar-brand {
+	margin-left: 5%;
+	font-size: 30px;
+	font-family: 'Fasthand', cursive;
+	font-weight: 200;
+}
+.navigation.navbar-dark .navbar-nav .nav-link {
+    padding: 0 25px;
+  
+    font-size: 16px;
+    line-height: 20px;
+   
+}
+
+.search-bar {
+	margin-left: 13%;
+	width: 60%;
+	 visibility: hidden;
+}
+
+.search-bar input {
+	width: 50%;
+	height: 70%;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-radius: 10px;
+	padding-left: 20px;
+}
+
+.fa-search {
+	color: white;
+	margin-left: 10px;
+	width: 10px;
+	height: 10px;
+}
+
+@media ( max-width :800px) {
+	.search-bar input {
+		margin-left: 13%;
+		width: 100%;
+	}
+}
+
+/* Body content */
+.carousel {
+	margin: 20px auto auto;
+	width: 70%;
+}
+
+.carousel-item img {
+	width: 100%;
+}
+
+.carousel-caption {
+	color: black;
+	font-size: 50px;
+}
+
+
+.section-products {
+	padding: 80px 0 54px;
+}
+
+.section-products .header {
+	margin-bottom: 50px;
+}
+
+.section-products .header h3 {
+	font-size: 1rem;
+	color: #fe302f;
+	font-weight: 500;
+}
+
+.section-products .header h2 {
+	font-size: 2.2rem;
+	font-weight: 400;
+	color: #444444;
+}
+
+.section-products .single-product {
+	margin-bottom: 26px;
+}
+
+.section-products .single-product .part-1 {
+	position: relative;
+	height: 290px;
+	max-height: 290px;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+.section-products .single-product .part-1::before {
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	transition: all 0.3s;
+}
+
+.section-products .single-product:hover .part-1::before {
+	transform: scale(1.2, 1.2) rotate(5deg);
+}
+
+.section-products #product-1 .part-1::before {
+	background:
+		url("https://rukminim1.flixcart.com/image/800/960/laptop-bag/8/t/4/mcaseblue206-clublaptop-laptop-case-apple-macbook-pro-me662ll-a-original-imadzydtgfzvgr2u.jpeg?q=50  ")
+		no-repeat center;
+	background-size: contain;
+	transition: all 0.3s;
+}
+
+.section-products #product-2 .part-1::before {
+	background:
+		url("https://rukminim1.flixcart.com/image/312/312/ku5ufm80/computer/4/u/k/na-gaming-laptop-dell-original-imag7csr9nqzcrkk.jpeg?q=70")
+		no-repeat center;
+	background-size: contain;
+}
+
+.section-products #product-3 .part-1::before {
+	background:
+		url("https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/page/category/brand-compare/module/dell-gen-laptops-inspiron-in5510nt-800x550.png?fmt=png-alpha&wid=800&hei=550")
+		no-repeat;
+	background-size: contain;
+}
+
+.section-products #product-4 .part-1::before {
+	background:
+		url("https://www.lenovo.com/medias/lenovo-laptop-ideapad-3-15-intel-hero.png?context=bWFzdGVyfHJvb3R8MzAzNDQ1fGltYWdlL3BuZ3xoNjYvaDY2LzEwNzU3MjQxNTAzNzc0LnBuZ3xjMzU3NWY4OGEyYjYzYTEwOGFlYzhiNWJhODEwYzA1MTlkNDYxODI3ZGQxM2IzYTRhYmY4M2YzY2NjYjhhOGJj")
+		no-repeat center;
+	background-size: contain;
+}
+
+.section-products #product-5 .part-1::before {
+	background:
+		url("https://5.imimg.com/data5/KF/UF/MY-55025141/hp-laptops-available-in-my-showroom-9842182115-500x500.png")
+		no-repeat center;
+	background-size: contain;
+}
+
+.section-products #product-6 .part-1::before {
+	background:
+		url("https://asset.msi.com/resize/image/global/product/product_1619086143bfb00a55933b895707e74ca4b3beea00.png62405b38c58fe0f07fcef2367d8a9ba1/400.png")
+		no-repeat center;
+	background-size: contain;
+}
+
+.section-products #product-7 .part-1::before {
+	background:
+		url("https://static-ecapac.acer.com/media/catalog/product/cache/3406b1b44daa08472620e74815bd5d93/e/x/extensa-ex215-54-1_3_1.jpg")
+		no-repeat center;
+	background-size: contain;
+}
+
+.section-products #product-8 .part-1::before {
+	background:
+		url("https://m.media-amazon.com/images/I/71K7P66CGnL._SX679_.jpg")
+		no-repeat center;
+	background-size: contain;
+}
+
+.section-products .single-product .part-1 .discount, .section-products .single-product .part-1 .new
+	{
+	position: absolute;
+	top: 15px;
+	left: 20px;
+	color: #ffffff;
+	background-color: #fe302f;
+	padding: 2px 8px;
+	text-transform: uppercase;
+	font-size: 0.85rem;
+}
+
+.section-products .single-product .part-1 .new {
+	left: 0;
+	background-color: #444444;
+}
+
+.section-products .single-product .part-1 ul {
+	position: absolute;
+	bottom: -41px;
+	left: 20px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	opacity: 0;
+	transition: bottom 0.5s, opacity 0.5s;
+}
+
+.section-products .single-product:hover .part-1 ul {
+	bottom: 30px;
+	opacity: 1;
+}
+
+.section-products .single-product .part-1 ul li {
+	display: inline-block;
+	margin-right: 4px;
+}
+
+.section-products .single-product .part-1 ul li a {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	background-color: #ffffff;
+	color: #444444;
+	text-align: center;
+	box-shadow: 0 2px 20px rgb(50 50 50/ 10%);
+	transition: color 0.2s;
+}
+
+.section-products .single-product .part-1 ul li a:hover {
+	color: #fe302f;
+}
+
+.section-products .single-product .part-2 .product-title {
+	font-size: 1rem;
+}
+
+.section-products .single-product .part-2 h4 {
+	display: inline-block;
+	font-size: 1rem;
+}
+
+.section-products .single-product .part-2 .product-old-price {
+	position: relative;
+	padding: 0 7px;
+	margin-right: 2px;
+	opacity: 0.6;
+}
+
+.section-products .single-product .part-2 .product-old-price::after {
+	position: absolute;
+	content: "";
+	top: 50%;
+	left: 0;
+	width: 100%;
+	height: 1px;
+	background-color: #444444;
+	transform: translateY(-50%);
+}
+
+/* Login Page styles */
+.gradient-custom {
+	/* fallback for old browsers */
+	background:  #AEFEFF;
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: -webkit-linear-gradient(to right, #AEFEFF, white);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to right, #AEFEFF, white);
+	font-family: 'Poppins', sans-serif;
+}
+.login-page{
+	font-family: 'Noto Serif', serif;
+}
+
+/* Register */
+.username-error, .password-error {
+	color: red;
+	font-size: 16px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 64px;
+	display: none;
+}
+
+.register-label {
+	font-size: 14px;
+	margin-right: 300px;
+}
+
+#RadioUser {
+	margin-right: 40px;
+}
+
+/*Logout Css*/
+
+.logout-text  {
+	
+	width:60%;
+	background-color:#ffffff;
+   margin-top:300px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    padding-top:10px;
+     padding-bottom:20px;
+     
+}
+.back-to-home-page{
+
+	color:white;
+	text-decoration:none;
+	margin-top:50px;
+	 font-size:20px;
+}
+
+
+/*Product list*/
+.product-a-tag{
+	text-decoration: none;
+	color: #000C66;
+	
+}
+
+.products-list{
+	margin-top:50px;
+	padding-left:50px;
+	padding-right:50px;
+	padding-top:40px;
+
+}
+
+
+.card{
+	
+	padding :20px;
+	width:400px;
+	
+}
+.card-title{
+	margin-top:10px;
+	margin_bottom:20px;
+	text-align:center;
+}
+
+
+.card-text{
+	margin-top:20px;
+	font-size:15px;
+}
+.card-text strong{
+	color :#000C66;
+}
+.card-img-top{
+		
+	
+	
+	
+	 margin-left: auto;
+  margin-right: auto;
+}
+
+ .buy-button{
+ margin-left:70px;
+ 
+	
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #D6EEEE;
+}
+
+/*Check Out Page*/
+.user-data-checkout{
+	font-size:20px;
+	
+}
+.container {
+  max-width: 960px;
+}
+
+.lh-condensed { line-height: 1.25; }
+
+/*Admin*/
+.logout-admin-button{
+	margin-left:1400px;
+	font-family: 'Noto Serif', serif;
+}
+
+.go-to-text{
+	font-family: 'Noto Serif', serif;
+	color:#041562;
+	width:60%;
+	height:150px;
+    margin-top:50px; 
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    padding:15px;
+    border-radius: 25px;
+      background-color:#ffffff;
+    
+	
+}
+
+
+.welcome-admin{
+	
+	color:white;
+	margin-top:100px; 
+    margin-left:800px;
+    margin-right:auto;
+}
+/*Admin Product*/
+.order-admin-container{
+	width:70%;
+	margin-top:80px;
+	background-color:#041562;
+	padding:10px;
+}
+
+
+/*Admin Edit*/
+
+.admin-edit-form{
+	margin-top:20px;
+}
+
+.order-admin-button{
+
+	color:white;
+	text-decoration:none;
+	margin-top:30px;
+	
+}
+
+.login-text-small{
+	color:#4FBDBA;
+	font-family: 'Noto Serif', serif;
+}
+.forgot-password{
+	color:#4FBDBA;
+	text-decoration:none;
+	font-size:15px;
+	font-weight: bold;
+	margin-top:30px;
+	font-family: 'Noto Serif', serif;
+}
+.category-links{
+
+	color:#4FBDBA;
+	text-decoration:none;
+	font-size:20px;
+	font-weight: bold;
+	margin-top:30px;
+	font-family: 'Noto Serif', serif;
+	
+}
+
+.product-names{
+		
+font-family: 'Noto Serif', serif;
+color:#041562;
+	font-size:20px;	
+	font-weight: bold;
+	margin-top:10px;
+	margin-bottom:20px;
+}
+.categories-title{
+font-family: 'Noto Serif', serif;
+	color:#041562;
+	margin-top:50px;
+ font-weight: 600;
+ font-size:30px;
+	
+	
+}
+.dark-container-color{
+	
+	color:#041562;
+	
+}
+
+/*Cart*/
+.cart-text{
+font-family: 'Noto Serif', serif;
+
+
+}
+.checkout-title{
+	font-family: 'Noto Serif', serif;
+	color:#041562;
+ font-weight: 600;
+ font-size:20px;
+
+	
+}
+.checkout-list-item{
+	
+margin-top:10px;
+color:black;
+
+}
+.address-table{
+	margin-top:10px;
+}
+.checkout-list{
+	
+	background-color:#ffffff;
+	font-size:18px;
+	padding-top:10px;
+	padding-left:10px;
+	padding-right:10px;
+	padding-bottom:10px;
+}
+.check-out{
+	margin-top:10px;
+	background-color:#ffffff;
+	  border-radius: 15px;
+	width:60%;
+	padding:20px;
+}
+.payment-container{
+	background-color:white;
+	color:black;
+	padding-left:10px;
+	padding-top:10px;
+}
+.checkout-total-text{
+		font-family: 'Noto Serif', serif;
+	font-size:30px;
+	color:#041562;
+}
+/*Contact Screen*/
+.contact-div{
+		font-family: 'Noto Serif', serif;
+	color:#041562;
+	width:35%;
+
+    margin-top:50px; 
+    margin-left:auto;
+    margin-right:auto;
+
+    padding:50px;
+    border-radius: 25px;
+      background-color:#ffffff;
+      
+}
+.contact-name{
+	width:30%;
+	display:inline-block;
+
+
+
+}
+.contact-email{
+	margin-top:10px;
+	width:60%;
+	display:inline-block;
+	
+	
+}
+.contact-inputs{
+	 box-shadow: inset 2px 2px 2px 0px #dddddd;
+}
+.contact-submit-button{
+	margin-top:10px;
+}
+.contact-image-div{
+	display:inline;
+	margin-right:50%;
+	
+}
