@@ -25,7 +25,15 @@
 </head>
 <body class="vh-100 gradient-custom">
 
+<% 
 
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setDateHeader("Expires", 0); // Proxies.
+HttpSession httpSession = request.getSession();
+httpSession.invalidate();
+
+%>
 
 <div class="logout-text shadow">
 <div class=" categories-title text-uppercase" role="alert"  align="center">
@@ -36,12 +44,7 @@
   
 </div>
 
-<% 
 
-HttpSession httpSession = request.getSession();
-httpSession.removeAttribute("User");
-
-%>
 
 	
 </body>

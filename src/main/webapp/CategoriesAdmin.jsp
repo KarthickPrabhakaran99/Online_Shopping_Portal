@@ -60,6 +60,15 @@
 
 MysqlConnection mysqlConnection = new MysqlConnection();
 ResultSet resultSet =mysqlConnection.categoriesRetrival();
+HttpSession httpSession = request.getSession();
+
+if(httpSession.getAttribute("UserId") !=null){
+
+
+}
+else{
+		response.sendRedirect("html/HomePage.html");
+	 }
 int serialNumber =0;
 while(resultSet.next())
 {
@@ -80,7 +89,7 @@ serialNumber++;
     </tr>
    
 
-    <% HttpSession httpSession = request.getSession();
+    <% 
      httpSession.setAttribute("categoryId", resultSet.getInt("category_id"))  ; 
 
 }%>

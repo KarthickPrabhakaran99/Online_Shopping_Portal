@@ -4,7 +4,15 @@
     pageEncoding="ISO-8859-1"%>
 <%
 MysqlConnection mysqlConnection = new MysqlConnection();
-   
+HttpSession httpSession = request.getSession();
+
+if(httpSession.getAttribute("UserId") !=null){
+
+
+}
+else{
+		response.sendRedirect("html/HomePage.html");
+	 }
  
 %>    
     

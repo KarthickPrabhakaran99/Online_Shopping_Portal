@@ -53,6 +53,15 @@ public String productName(int productId) throws Exception{
 %>
 
 <%
+HttpSession httpSession = request.getSession();
+
+if(httpSession.getAttribute("UserId") !=null){
+
+
+
+}else{
+		response.sendRedirect("html/HomePage.html");
+	 }
 int id = (int)session.getAttribute("UserId");
 String cardName = request.getParameter("card-name");
 int currentProductId = (int)session.getAttribute("CurrentProductId");

@@ -29,24 +29,24 @@ public class AddAdminProduct extends HttpServlet {
         float productPrice = Float.parseFloat(request.getParameter("product-price"));
         int productQuantity =Integer.parseInt(  request.getParameter("product-quantity"));
         String productCategory = request.getParameter("product-category");
-        Part productImagePart = request.getPart("product-image");
-        String path = "C:/Users/Karthick/eclipse-workspace/Online Shopping Portal/src/main/webapp/images/"+productImagePart.getSubmittedFileName();
-        InputStream inputStream = productImagePart.getInputStream();
-        
-        
-        System.out.print("\n"+productImagePart.getSubmittedFileName()+"fadfas");
-        
+//        Part productImagePart = request.getPart("product-image");
+//        String path = "C:/Users/Karthick/eclipse-workspace/Online Shopping Portal/src/main/webapp/images/"+productImagePart.getSubmittedFileName();
+//        InputStream inputStream = productImagePart.getInputStream();
+//        
+//        
+//        System.out.print("\n"+productImagePart.getSubmittedFileName()+"fadfas");
+//        
         MysqlConnection mysqlConnection = new MysqlConnection();
        
           mysqlConnection.addProduct(productId, productName, productPrice, productQuantity,productCategory);
         
-        byte[] bytes= new byte[inputStream.available()];
-		inputStream.read(bytes);
-		FileOutputStream fileOutputStream = new FileOutputStream(path);
-		fileOutputStream.write(bytes);
-		fileOutputStream.flush();
-		fileOutputStream.close();
-     
+//        byte[] bytes= new byte[inputStream.available()];
+//		inputStream.read(bytes);
+//		FileOutputStream fileOutputStream = new FileOutputStream(path);
+//		fileOutputStream.write(bytes);
+//		fileOutputStream.flush();
+//		fileOutputStream.close();
+//     
 	  
       
        response.sendRedirect("AdminAdd.jsp?dataUpdate=success");

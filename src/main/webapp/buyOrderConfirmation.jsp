@@ -30,6 +30,15 @@
 
 
 <%
+HttpSession httpSession = request.getSession();
+
+if(httpSession.getAttribute("UserId") !=null){
+
+
+}
+else{
+		response.sendRedirect("html/HomePage.html");
+	 }
 MysqlConnection mysqlConnection = new MysqlConnection();
 int id = (int)session.getAttribute("UserId");
 String AddressCheck = request.getParameter("AddressCheck");

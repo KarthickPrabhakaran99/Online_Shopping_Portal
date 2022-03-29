@@ -43,7 +43,15 @@
    <%
  
  MysqlConnection mysqlConnection = new MysqlConnection();
+   HttpSession httpSession = request.getSession();
+   
+   if(httpSession.getAttribute("UserId") !=null){
 
+   
+   }
+  else{
+  		response.sendRedirect("html/HomePage.html");
+  	 }
  
 int id = (int)session.getAttribute("UserId");
 ResultSet resultSet =   mysqlConnection.customerInformationRetrival(id);

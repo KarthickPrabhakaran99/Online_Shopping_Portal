@@ -52,6 +52,9 @@
  
  
  }
+else{
+		response.sendRedirect("html/HomePage.html");
+	 }
 
 
 

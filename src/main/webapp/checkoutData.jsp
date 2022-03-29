@@ -41,6 +41,7 @@
   <body class="gradient-custom ">
     <%!
 public int productData(String productName,String typeOfData)throws Exception{
+    	
 	MysqlConnection mysqlConnection  = new MysqlConnection();
 	
 	ResultSet resultset   = mysqlConnection.productRetrival(productName);
@@ -79,6 +80,15 @@ public String productName(int productId) throws Exception{
    <%
  
  MysqlConnection mysqlConnection = new MysqlConnection();
+   HttpSession httpSession = request.getSession();
+   
+   if(httpSession.getAttribute("UserId") !=null){
+
+   
+   }
+  else{
+  		response.sendRedirect("html/HomePage.html");
+  	 }
 
  
 int id = (int)session.getAttribute("UserId");

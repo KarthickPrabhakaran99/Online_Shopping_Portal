@@ -52,7 +52,19 @@ href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel=
 <body>
 
 
+<%
+HttpSession httpSession = request.getSession();
 
+if(httpSession.getAttribute("UserId") !=null){
+
+
+}
+else{
+		response.sendRedirect("html/HomePage.html");
+	 }
+
+
+%>
 
 
 

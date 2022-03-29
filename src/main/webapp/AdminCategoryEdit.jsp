@@ -81,7 +81,15 @@ href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel=
 <%
 
 
+HttpSession httpSession = request.getSession();
 
+if(httpSession.getAttribute("UserId") !=null){
+
+
+}
+else{
+		response.sendRedirect("html/HomePage.html");
+	 }
 int categoryId = Integer.parseInt(request.getParameter("id"));
 
 ResultSet resultSet =mysqlConnection.categoriesRetrivalID(categoryId);

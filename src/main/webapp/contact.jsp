@@ -132,7 +132,19 @@ mysqlConnection.addreport(id, firstName, lastName, email, message, additionalDet
 	<div class=" contact-div shadow " >
   
    </br>
-   
+  <%
+  
+  HttpSession httpSession = request.getSession();
+  
+  if(httpSession.getAttribute("UserId") !=null){
+
+  
+  }
+ else{
+ 		response.sendRedirect("html/HomePage.html");
+ 	 }
+  
+  %> 
   
   <form action="" method="POST" class="contact-form">
   <div class="form-row">

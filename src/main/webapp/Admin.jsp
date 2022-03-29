@@ -36,6 +36,15 @@
 <body class="vh-100 gradient-custom">
 
 	<%
+	 HttpSession httpSession = request.getSession();
+	 
+	 if(httpSession.getAttribute("UserId") !=null){
+
+	 
+	 }
+	else{
+			response.sendRedirect("html/HomePage.html");
+		 }
 	String userName = (String) session.getAttribute("User");
 	%>
 	<div class="categories-title text-uppercase " align="center">

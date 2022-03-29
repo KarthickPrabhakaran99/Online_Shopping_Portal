@@ -17,7 +17,7 @@
 
 <div class=" logout-text alert alert-danger" role="alert">
   <h1 class="">Incorrect Password or Email </h1>
-  <a class="back-to-home-page"href="login.html"> Go to back to LoginPage</a>
+  <a class="back-to-home-page"href="html/login.html"> Go to back to LoginPage</a>
 </div>
 
 
