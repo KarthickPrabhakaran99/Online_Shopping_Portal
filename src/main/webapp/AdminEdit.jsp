@@ -84,19 +84,28 @@ href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel=
 <%
 
 
-ResultSet resultSet =mysqlConnection.productRetrival();
+
 int productId = Integer.parseInt(request.getParameter("id"));
-resultSet.next();
-resultSet = mysqlConnection.productNameRetrival(productId);
+
+ResultSet resultSet = mysqlConnection.productNameRetrival(productId);
+HttpSession httpSession = request.getSession();
+
+if(httpSession.getAttribute("UserId") !=null){
+
+
+}
+else{
+		response.sendRedirect("html/HomePage.html");
+	 }
 
 System.out.print(productId);
-
 String productName = resultSet.getString("product_name") ;
 System.out.print(resultSet.getString("product_name"));
 resultSet = mysqlConnection.productRetrival(productName);
-float productPrice = resultSet.getFloat("product_price");
+double productPrice = resultSet.getDouble("product_price");
 int productQuantity = resultSet.getInt("product_quantity");
-String productCategory = resultSet.getString("product_category");
+String productCategory = resultSet.getString("category_name");
+
 
 
 %>

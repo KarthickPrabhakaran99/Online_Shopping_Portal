@@ -1,6 +1,7 @@
 package com.database;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 /*
  * Title:Online Shopping Portal 
@@ -12,25 +13,20 @@ import java.sql.DriverManager;
 //MYSQL CONNECTION CLASS:
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 
 import com.aspire.RegisteredInformation;
 
-/*
- * Title:Online Shopping Portal 
- * Author:Karthick Prabakaran
- * Created At:1 Dec 2021
- * Reviewed BY:Akshaya Rajagopal
- * Modifies At:25:01:2022
- * */
+
 
 public class MysqlConnection {
 
 	// DATABASE CONNECTION:
 
 		public Connection dataBaseConnect() throws Exception {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/aspire-online-shopping-portal";
-			String uname = "root";
+			Class.forName("org.postgresql.Driver");
+			String url = "jdbc:postgresql://localhost:5432/onlineShoppingPortal";
+			String uname = "postgres";
 			String password = "Karthi@1999";
 			Connection connection = DriverManager.getConnection(url, uname, password);
 			return connection;
@@ -66,14 +62,40 @@ public class MysqlConnection {
 		// PASSWORD VALIDATION:
 		public ResultSet passwordValidation(String email, String password) throws Exception {
 
-			String query = "SELECT name,id,type FROM registered_Data WHERE email ='"
-					+ email + "' AND password ='" + password + "'";
+			
+		
+			String query = "SELECT CASE WHEN EXISTS  ( SELECT * FROM registered_data WHERE email='"+email+"' and password ='"+password+"')THEN CAST(1 AS BIT)ELSE CAST(0 AS BIT) END";
+		
+			
+			try {
+				Connection connection = dataBaseConnect();
+				PreparedStatement preparedstatement = connection.prepareStatement(query);
+				
+				
+				ResultSet resultSet = preparedstatement.executeQuery();
+				resultSet.next();
+
+				return resultSet;
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		}
+
+//		USER DATA RETRIVAL:
+		public ResultSet customerInformationRetrival(int id) throws Exception {
+
+			String query = "SELECT * FROM registered_data WHERE id ='"
+					+ id + "'";
 			try {
 				Connection connection = dataBaseConnect();
 				PreparedStatement preparedstatement = connection.prepareStatement(query);
 
 				
-				ResultSet resultSet = preparedstatement.executeQuery(query);
+				ResultSet resultSet = preparedstatement.executeQuery();
 				resultSet.next();
 
 				return resultSet;
@@ -82,17 +104,18 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 				return null;
 			}
 		}
-//		USER DATA RETRIVAL:
-		public ResultSet customerInformationRetrival(int id) throws Exception {
 
-			String query = "SELECT name,email,password,address_line1,address_line2,country,postal_code,state,card_number,card_expiry_date FROM registered_data WHERE id ='"
-					+ id + "'";
+//		USER ID RETRIVAL
+		public ResultSet customerIdUsingEmailResultSet (String email) throws Exception {
+
+			String query = "SELECT id FROM registered_data WHERE email ='"
+					+ email + "'";
 			try {
 				Connection connection = dataBaseConnect();
 				PreparedStatement preparedstatement = connection.prepareStatement(query);
 
 				
-				ResultSet resultSet = preparedstatement.executeQuery(query);
+				ResultSet resultSet = preparedstatement.executeQuery();
 				resultSet.next();
 
 				return resultSet;
@@ -113,7 +136,7 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 						PreparedStatement preparedstatement = connection.prepareStatement(query);
 
 						
-						ResultSet resultSet = preparedstatement.executeQuery(query);
+						ResultSet resultSet = preparedstatement.executeQuery();
 						resultSet.next();
 
 						return resultSet;
@@ -125,7 +148,7 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 				// PRODUCT RETRIVAL USING CATEGORY NAME:
 				public ResultSet productRetrivalCategory(String categoryName) throws Exception {
 
-					String query = "SELECT * FROM products WHERE product_category ='"
+					String query = "SELECT * FROM products WHERE category_name ='"
 							+ categoryName + "'";
 					System.out.print(query);
 					try {
@@ -133,7 +156,7 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 						PreparedStatement preparedstatement = connection.prepareStatement(query);
 
 						
-						ResultSet resultSet = preparedstatement.executeQuery(query);
+						ResultSet resultSet = preparedstatement.executeQuery();
 					
 
 						return resultSet;
@@ -151,8 +174,8 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 						PreparedStatement preparedstatement = connection.prepareStatement(query);
 
 						
-						ResultSet resultSet = preparedstatement.executeQuery(query);
-					
+						ResultSet resultSet = preparedstatement.executeQuery();
+					System.out.println("Error");
 
 						return resultSet;
 					} catch (Exception e) {
@@ -165,7 +188,7 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 				public void productDetailsUpdate(int productId,String productName,float productPrice,int productQuantity, String productCategory) {
 
 					String query = "UPDATE products SET product_id ='"
-							+ productId + "',product_name='"+productName+"',product_price='"+productPrice+"',product_quantity='"+productQuantity+"',product_category='"+productCategory+"' where product_id='"+productId +"' ;";
+							+ productId + "',product_name='"+productName+"',product_price='"+productPrice+"',product_quantity='"+productQuantity+"',category_name='"+productCategory+"' where product_id='"+productId +"' ;";
 					System.out.print(query);
 					try {
 						Connection connection = dataBaseConnect();
@@ -196,16 +219,16 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 //				PRODUCT NAME RETRIVEL
 				public ResultSet productNameRetrival(int productId) throws Exception {
 
-					String query = "SELECT product_name FROM products WHERE product_id ='"
+					String query = "SELECT * FROM products WHERE product_id ='"
 							+ productId + "'";
 					try {
 						Connection connection = dataBaseConnect();
 						PreparedStatement preparedstatement = connection.prepareStatement(query);
 
 						
-						ResultSet resultSet = preparedstatement.executeQuery(query);
+						ResultSet resultSet = preparedstatement.executeQuery();
 						resultSet.next();
-					
+					System.out.println("Executed Properly");
 						
 
 						return resultSet;
@@ -256,7 +279,7 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 
 						
 					} catch (Exception e) {
-		             System.out.println(e.getMessage()+"\nCannot able to fetch data ");
+		             System.out.println(e.getMessage()+"\nCannot able to update data");
 						
 					}
 				}
@@ -281,6 +304,7 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 							preparedStatementOrder.setString(1, orderId);
 							preparedStatementOrder.setInt(2, userId);
 							preparedStatementOrder.setFloat(3, amount);
+//							Date date1=(Date) new SimpleDateFormat("dd/MM/yyyy").parse(orderDate);  
 							preparedStatementOrder.setString(4, orderDate);
 							
 
@@ -355,6 +379,7 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 							preparedstatement.setFloat(3, productPrice);
 							preparedstatement.setInt(4, productQuantity);
 							preparedstatement.setString(5, productCategory);
+							System.out.println("Executed Properly");
 							
 							preparedstatement.executeUpdate();
 							
@@ -405,7 +430,7 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 								PreparedStatement preparedstatement = connection.prepareStatement(query);
 
 								
-								ResultSet resultSet = preparedstatement.executeQuery(query);
+								ResultSet resultSet = preparedstatement.executeQuery();
 							
 
 								return resultSet;
@@ -424,7 +449,7 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 								PreparedStatement preparedstatement = connection.prepareStatement(query);
 
 								
-								ResultSet resultSet = preparedstatement.executeQuery(query);
+								ResultSet resultSet = preparedstatement.executeQuery();
 							
 
 								return resultSet;
@@ -443,7 +468,7 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 								PreparedStatement preparedstatement = connection.prepareStatement(query);
 
 								
-								ResultSet resultSet = preparedstatement.executeQuery(query);
+								ResultSet resultSet = preparedstatement.executeQuery();
 							
 
 								return resultSet;
@@ -460,9 +485,9 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 							try {
 								Connection connection = dataBaseConnect();
 								PreparedStatement preparedstatement = connection.prepareStatement(query);
-
+       System.out.println("Working");
 								
-								ResultSet resultSet = preparedstatement.executeQuery(query);
+								ResultSet resultSet = preparedstatement.executeQuery();
 							
 
 								return resultSet;
@@ -481,7 +506,7 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 								PreparedStatement preparedstatement = connection.prepareStatement(query);
 
 								
-								ResultSet resultSet = preparedstatement.executeQuery(query);
+								ResultSet resultSet = preparedstatement.executeQuery();
 							
                         
 								return resultSet;
@@ -500,7 +525,7 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 								PreparedStatement preparedstatement = connection.prepareStatement(query);
 
 								
-								ResultSet resultSet = preparedstatement.executeQuery(query);
+								ResultSet resultSet = preparedstatement.executeQuery();
 							
                                  resultSet.next();
 								return resultSet;
@@ -512,8 +537,8 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 						}
 						// ADD ELEMENT TO CART :
 						public boolean addCart(int userId,int productId,String productName,float productPrice,int quantity) {
-							
-							String query = "INSERT INTO cart values(?,?,?,?,?)";
+						
+							String query = "INSERT INTO cart(user_id,product_id,Quantity,product_name,product_price) values(?,?,?,?,?)";
 
 							try {
 								Connection connection = dataBaseConnect();
@@ -521,9 +546,9 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 								PreparedStatement preparedStatement = connection.prepareStatement(query);
 								preparedStatement.setInt(1, userId);
 								preparedStatement.setInt(2, productId);
-								preparedStatement.setString(3, productName);
-								preparedStatement.setFloat(4, productPrice);
-								preparedStatement.setInt(5, quantity);
+								preparedStatement.setString(4, productName);
+								preparedStatement.setString(5, productPrice+"");
+								preparedStatement.setInt(3, quantity);
 								
 								
 
@@ -548,7 +573,7 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 								PreparedStatement preparedstatement = connection.prepareStatement(query);
 
 								
-								ResultSet resultSet = preparedstatement.executeQuery(query);
+								ResultSet resultSet = preparedstatement.executeQuery();
 							
 
 								return resultSet;
@@ -568,7 +593,7 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 								PreparedStatement preparedstatement = connection.prepareStatement(query);
 
 								
-								ResultSet resultSet = preparedstatement.executeQuery(query);
+								ResultSet resultSet = preparedstatement.executeQuery();
 							
 
 								return resultSet;
@@ -718,7 +743,7 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 									PreparedStatement preparedstatement = connection.prepareStatement(query);
 
 									
-									ResultSet resultSet = preparedstatement.executeQuery(query);
+									ResultSet resultSet = preparedstatement.executeQuery();
 								
 
 									return resultSet;
@@ -737,7 +762,7 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 									PreparedStatement preparedstatement = connection.prepareStatement(query);
 
 									
-									ResultSet resultSet = preparedstatement.executeQuery(query);
+									ResultSet resultSet = preparedstatement.executeQuery();
 								
 
 									return resultSet;
@@ -811,9 +836,9 @@ System.out.println(e.getMessage()+"\nCannot able to fetch data ");
 									PreparedStatement preparedstatement = connection.prepareStatement(query);
 
 									
-									ResultSet resultSet = preparedstatement.executeQuery(query);
-									resultSet.next();
-
+									ResultSet resultSet = preparedstatement.executeQuery();
+									
+System.out.println("working");
 									return resultSet;
 								} catch (Exception e) {
 					System.out.println(e.getMessage()+"\nCannot able to fetch data ");

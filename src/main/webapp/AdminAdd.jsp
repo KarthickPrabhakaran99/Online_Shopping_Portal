@@ -48,6 +48,18 @@ href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel=
 <title>Add Product</title>
 </head>
 <body>
+<%
+MysqlConnection mysqlConnection = new MysqlConnection();
+HttpSession httpSession = request.getSession();
+
+if(httpSession.getAttribute("UserId") !=null  ){
+
+
+}
+else{
+		response.sendRedirect("html/HomePage.html");
+	 }
+%>
 
 	<section class="vh-100 gradient-custom login-page" id="LoginPage">
 		<div class="container py-5 h-100">
@@ -99,12 +111,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel=
 											name="product-category" value="" required /> <label
 											class="form-label" for="typeNameX">Product Category</label>
 
-									</div>
-									<div class="mb-4">
+							   <!--			</div>
+						<div class="mb-4">
 										<label for="formFile" class="form-label text-light">Upload
 											the product image</label> <input class="form-control" type="file"
 											id="formFile" name="product-image">
-									</div>
+									</div> -->	
 							</div>
 
 

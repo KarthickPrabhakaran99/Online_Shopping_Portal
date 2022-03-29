@@ -53,8 +53,20 @@
     <%
 
 MysqlConnection mysqlConnection = new MysqlConnection();
+    String user="Guest";
+    if(session.getAttribute("UserId") !=null){
+     int id= (int)session.getAttribute("UserId");
+    	ResultSet resultSet = mysqlConnection.customerInformationRetrival(id);
+    	user = resultSet.getString("name");
+    
+    
+    }else{
+   		response.sendRedirect("html/HomePage.html");
+   	 }
+
 ResultSet resultSet =mysqlConnection.reportsRetrival();
 int serialNumber =0;
+
 while(resultSet.next())
 {
 serialNumber++;

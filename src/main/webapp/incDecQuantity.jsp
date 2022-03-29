@@ -15,6 +15,16 @@ int productId = Integer.parseInt(request.getParameter("id")) ;
 String quantity = request.getParameter("quantity");
 int userId = (int)session.getAttribute("UserId");
 MysqlConnection mysqlConnection = new MysqlConnection();
+
+HttpSession httpSession = request.getSession();
+
+if(httpSession.getAttribute("UserId") !=null){
+
+
+
+}else{
+		response.sendRedirect("html/HomePage.html");
+	 }
 if("inc".equals(quantity)){
 	ResultSet resultSet = mysqlConnection.cartRetrivalProduct(userId);
 	resultSet.next();

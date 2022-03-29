@@ -54,6 +54,15 @@
 
 MysqlConnection mysqlConnection = new MysqlConnection();
 ResultSet resultSet =mysqlConnection.productRetrival();
+HttpSession httpSession = request.getSession();
+
+if(httpSession.getAttribute("UserId") !=null){
+
+
+
+}else{
+		response.sendRedirect("html/HomePage.html");
+	 }
 int serialNumber =0;
 while(resultSet.next())
 {
@@ -68,7 +77,7 @@ serialNumber++;
       <td class="cart-text"><%=resultSet.getString("product_name") %></td>
       <td class="cart-text"><%=resultSet.getFloat("product_price") %></td>
       <td class="cart-text"><%=resultSet.getInt("product_quantity")%></td>
-       <td class="cart-text"><%=resultSet.getString("product_category")%></td>
+       <td class="cart-text"><%=resultSet.getString("category_name")%></td>
        
          <td><a class="cart-text"  href="AdminEdit.jsp?id=<%=resultSet.getInt("product_id") %>" class="link-light order-admin-button"><button type="button" class="btn btn-primary shadow">Edit <i class="fas fa-edit"></i></button></a></td>
          <td><a class="cart-text"  href="AdminDelete.jsp?id=<%=resultSet.getInt("product_id") %>" class="link-light order-admin-button" ><button type="button" class="btn btn-danger shadow">Remove <i class="far fa-trash-alt"></i></button></a></td>
@@ -76,7 +85,7 @@ serialNumber++;
     </tr>
    
 
-    <% HttpSession httpSession = request.getSession();
+    <% 
      httpSession.setAttribute("productId", resultSet.getInt("product_id"))  ; 
 
 }%>

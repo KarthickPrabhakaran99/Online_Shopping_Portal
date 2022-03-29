@@ -1,3 +1,4 @@
+
 <%@page import="java.sql.ResultSet"%>
 <%@page import="com.database.MysqlConnection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -63,7 +64,15 @@ href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel=
 
 
 <%
+HttpSession httpSession = request.getSession();
 
+if(httpSession.getAttribute("UserId") !=null){
+
+
+}
+else{
+		response.sendRedirect("html/HomePage.html");
+	 }
 
 
 int categoryId = Integer.parseInt(request.getParameter("id"));

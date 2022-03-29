@@ -48,13 +48,16 @@
  
  MysqlConnection mysqlConnection  = new MysqlConnection();
  HttpSession httpSession = request.getSession();
- String user="Guest";
+String user = "Guest";
  if(httpSession.getAttribute("UserId") !=null){
   int id= (int)httpSession.getAttribute("UserId");
  	ResultSet resultSet = mysqlConnection.customerInformationRetrival(id);
- 	user = resultSet.getString("name");
+ 	System.out.println(resultSet);
+ 	 user = resultSet.getString("name");
  
  
+ }else{
+	response.sendRedirect("html/HomePage.html");
  }
 
 
@@ -169,6 +172,6 @@
 </Section>
 
 
-	<script type='module' src="login.js"></script>
+
 </body>
 </html>

@@ -58,7 +58,15 @@
 MysqlConnection mysqlConnection = new MysqlConnection();
 ResultSet resultSetOrder =mysqlConnection.orderRetrival();
 ResultSet resultSetUserProduct =mysqlConnection.userProductRetrival();
+HttpSession httpSession = request.getSession();
 
+if(httpSession.getAttribute("UserId") !=null){
+
+
+
+}else{
+		response.sendRedirect("html/HomePage.html");
+	 }
 
 
 int serialNumber =0;

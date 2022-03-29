@@ -48,6 +48,7 @@
 
 
  
+
  
  MysqlConnection mysqlConnection  = new MysqlConnection();
  HttpSession httpSession = request.getSession();
@@ -58,7 +59,12 @@
  	user = resultSet.getString("name");
  
  
- }
+ }else{
+		response.sendRedirect("html/HomePage.html");
+	 }
+ 
+
+
 
 
 

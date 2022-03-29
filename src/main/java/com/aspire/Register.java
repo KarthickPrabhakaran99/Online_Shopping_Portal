@@ -1,6 +1,9 @@
 package com.aspire;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.NoSuchAlgorithmException;
+
+import com.encryptDecrypt.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,14 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.database.MysqlConnection;
 
-/*
- * Title:Online Shopping Portal 
- * Author:Karthick Prabakaran
- * Created At:1 Dec 2021
- * Reviewed BY:Akshaya Rajagopal
- * Modifies At:25:01:2022
- * */
-//REGISTER SERVLET:
+
 @WebServlet("/register")
 public class Register extends HttpServlet{
 	/**
@@ -33,7 +29,17 @@ public class Register extends HttpServlet{
 		String email = httpServletRequest.getParameter("email-input");
 		String password= httpServletRequest.getParameter("password-input");
 		String type = httpServletRequest.getParameter("type-input");
-		RegisteredInformation registeredInformation = new RegisteredInformation(name,email,type,password);
+		System.out.println("servlet called");
+		String encryptedPasswordString = "";
+		PasswordEncryption passwordEncryption = new PasswordEncryption();
+		try {
+			encryptedPasswordString=	passwordEncryption.toHexString(passwordEncryption.getSHA(password));
+			
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		RegisteredInformation registeredInformation = new RegisteredInformation(name,email,type,encryptedPasswordString);
 		MysqlConnection mysqlConnection = new MysqlConnection();
 		if(mysqlConnection.dataBaseAccountCreate(registeredInformation)) {
 			HttpSession httpSession = httpServletRequest.getSession();
@@ -54,8 +60,7 @@ public class Register extends HttpServlet{
 		}
 		PrintWriter outPrintWriter = httpServletResponse.getWriter();
 		outPrintWriter.println(name+""+email+""+password);
-//		System.out.println("Hello ");
-//		System.out.print(email+" "+password);
+
 		
 	}
 

@@ -50,7 +50,10 @@ if(httpSession.getAttribute("UserId") !=null){
 	ResultSet resultSet = mysqlConnection.customerInformationRetrival(id);
 	user = resultSet.getString("name");
  
- }
+ } 
+else{
+		response.sendRedirect("html/HomePage.html");
+	 }
 
 
 
